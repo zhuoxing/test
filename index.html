@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>立即下载</title>
+  <style>
+    html{
+      font-size: 10px;
+    }
+    body{
+      position: relative;
+      height: 100vh;
+      background: url('http://cdn.awd0.cn/bg2.png') no-repeat;
+      background-size: 100% 100%;
+    }
+    .btn-box{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      padding-bottom: 1rem;
+    }
+    .down-btn{
+      display: block;
+      text-align: center;
+      width: 1.22rem;
+      height: 0.45rem;
+      border: 0;
+      background: #d9c1c7;
+      color: #333;
+      border-radius: 0.26rem;
+      line-height: 0.45rem;
+      margin: 0 auto;
+      font-size: 0.18rem;
+    }
+  </style>
+  <script>
+    (function(doc, win) {
+        var docEl = doc.documentElement,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function() {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              if (clientWidth >= 375) { //750这个值，根据设计师的psd宽度来修改，是多少就写多少，现在手机端一般是750px的设计稿，如果设计师给的1920的psd，自己用Photoshop等比例缩小
+                  docEl.style.fontSize = '100px';
+              } else {
+                  docEl.style.fontSize = 100 * (clientWidth / 375) + 'px'; //750这个值，根据设计师的psd宽度来修改，是多少就写多少，现在手机端一般是750px的设计稿，如果设计师给的1920的psd，自己用Photoshop等比例缩小
+              }
+          };
+  
+      if (!doc.addEventListener) return;
+      //浏览器宽度高度变化的时候
+      win.addEventListener(resizeEvt, recalc, false);
+      //浏览器开始渲染的时候
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+  })(document, window);
+  </script>
+</head>
+<body>
+  <div class="btn-box">
+    <button class="down-btn">立即下载</button>
+  </div>
+  <script>
+    const u = navigator.userAgent
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
+    var btnDom = document.getElementsByClassName('down-btn')[0]
+    btnDom.onclick = function() {
+      if (isIOS) {
+        window.location.href = 'https://dibaqu.com/qmae'
+      } else {
+        window.location.href = 'http://cdn.awd0.cn/com.hxm.yehua-20191016-1-v1.0.2.apk'
+      }
+    }
+  </script>
+</body>
+</html>
